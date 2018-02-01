@@ -15,13 +15,14 @@ Run `docker run -e GIS_HOST=x.x.x.x -e GIS_USER=postgres -e GIS_DATABASE=gis -e 
 
 ## About
 
-The container runs Ubuntu 14.04 (Trusty) and is based on the
+The container runs Ubuntu 16.04 (Xenial) and is based on the
 [phusion/baseimage-docker](https://github.com/phusion/baseimage-docker).  It
 includes:
 
-* Apache 2.2
+* Apache 2.4
 * The latest [Osm2pgsql](http://wiki.openstreetmap.org/wiki/Osm2pgsql) code (at
   the time of image creation)
-* The latest [Mapnik](http://mapnik.org/) code (at the time of image creation)
+* The ubuntu package of [Mapnik](http://mapnik.org/)
 * The latest [Mod_Tile](http://wiki.openstreetmap.org/wiki/Mod_tile) code (at
   the time of image creation)
+* The latest [Carto](https://github.com/gravitystorm/openstreetmap-carto) stylesheet
