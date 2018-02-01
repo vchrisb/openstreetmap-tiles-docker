@@ -1,0 +1,11 @@
+#!/bin/sh
+
+##
+# Runit run script for the renderd daemon
+#
+
+#`/sbin/setuser www-data` runs the given command as the user `www-data`.  If
+# you omit that part, the command will be run as root.
+cat /tmp/openstreetmap-carto/project.mml | sed "s/    dbname: .*/    dbname: \"$GIS_DATABASE\"/" | sed "/dbname/a \    host: \"$GIS_HOST\"" | sed "/dbname/a \    user: \"$GIS_USER\"" | sed "/dbname/a \    password: \"$GIS_PASSWORD\"" > /tmp/openstreetmap-carto/project_new.mml
+carto /tmp/openstreetmap-carto/project_new.mml > /tmp/openstreetmap-carto/mapnik.xml
+exec /sbin/setuser www-data /usr/local/bin/renderd --config /usr/local/etc/renderd.conf --foreground yes
