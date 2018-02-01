@@ -8,7 +8,7 @@
 # you omit that part, the command will be run as root.
 
 # if running on Cloud Foundry
-if [[ -v VCAP_APPLICATION]]
+if [[ -v VCAP_APPLICATION ]];
 then
   sed -i "s|HOST=.*|HOST=$(echo $VCAP_APPLICATION | jq .uris[0] -r)|" /usr/local/etc/renderd.conf
   GIS_DATABASE=$(echo $VCAP_SERVICES | jq '.[] | select(.[].credentials.engine=="postgres") | .[].credentials.database' -r)
